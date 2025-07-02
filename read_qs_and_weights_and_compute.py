@@ -1,10 +1,11 @@
 
 #%% ============================= Load structure & weights from Excel
+!pip install pandas
 
 import pandas as pd
 
-filename = r'C:\Users\CG14739\OneDrive - Cerved\Python Scripts\ESGRecode\Struttura_e_pesi.xlsx'
-values_df = pd.read_excel(filename, sheet_name='KPI - Values', header=None)
+gitlab_raw_url = 'https://gitlab.com/cerved/esg-recode/-/raw/main/Struttura_e_pesi.xlsx'
+values_df      = pd.read_excel(gitlab_raw_url, sheet_name='KPI - Values', header=None)
 
 # Find all dimension rows (e.g., ENV.POL, SOC.WORKFORCE, etc.) and their weights
 dimension_mask = values_df[0].astype(str).str.match(r'^[A-Z]+\.[A-Z]+$')
@@ -62,8 +63,8 @@ questions_df = questions_df[desired_order]
 #%% ============================= COMPUTE SCORE, STARTING FROM MATRIX OF QUESTION SCORES
 
 # Load q-scores of firms
-filename = r'C:\Users\CG14739\OneDrive - Cerved\Python Scripts\ESGRecode\CG13523_20230602_20250702_ALLMETRICS_aXib.xlsx'
-scores_df = pd.read_excel(filename, sheet_name='KPI - Scores', header=None)
+gitlab_raw_url = 'https://gitlab.com/cerved/esg-recode/-/raw/main/Firms_question_scores.xlsx'
+scores_df = pd.read_excel(gitlab_raw_url, sheet_name='KPI - Scores', header=None)
 
 
 #%% Pick one firm & score it
