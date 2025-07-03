@@ -1,6 +1,5 @@
 
 #%% ============================= Load structure & weights from Excel
-!pip install pandas
 
 import pandas as pd
 
